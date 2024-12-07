@@ -1,0 +1,121 @@
+import java.util.ArrayList;
+
+public class MaxValue {
+    public static Integer max(ArrayList<Integer> list) {
+        if (list == null || list.size() == 0) {
+            return null;
+        }
+
+        Integer max = list.get(0);
+        for (Integer num : list) {
+            if (num > max) {
+                max = num;
+            }
+        }
+        return max;
+    }
+}
+
+
+
+
+
+
+
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class SortList {
+    public static void sort(ArrayList<Integer> list) {
+        if (list != null) {
+            Collections.sort(list);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+public class GroceryItemOrder {
+    private String name;
+    private int quantity;
+    private double pricePerUnit;
+
+    public GroceryItemOrder(String name, double pricePerUnit) {
+        this.name = name;
+        this.pricePerUnit = pricePerUnit;
+        this.quantity = 1; // Default quantity is set to 1
+    }
+
+    public double getCost() {
+        return quantity * pricePerUnit;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public double getPricePerUnit() {
+        return pricePerUnit;
+    }
+}
+import java.util.ArrayList;
+
+public class GroceryList {
+    private ArrayList<GroceryItemOrder> items;
+
+    public GroceryList() {
+        items = new ArrayList<>();
+    }
+
+    public void add(GroceryItemOrder item) {
+        if (items.size() < 10) {
+            items.add(item);
+        } else {
+            System.out.println("The grocery list is full. Cannot add more items.");
+        }
+    }
+
+    public double getTotalCost() {
+        double totalCost = 0;
+        for (GroceryItemOrder item : items) {
+            totalCost += item.getCost();
+        }
+        return totalCost;
+    }
+}
+public class GroceryListTest {
+    public static void main(String[] args) {
+        // Create grocery list
+        GroceryList list = new GroceryList();
+
+        // Create grocery items
+        GroceryItemOrder item1 = new GroceryItemOrder("Milk", 1.50);
+        item1.setQuantity(2);
+        GroceryItemOrder item2 = new GroceryItemOrder("Bread", 2.00);
+        item2.setQuantity(3);
+        GroceryItemOrder item3 = new GroceryItemOrder("Eggs", 0.50);
+        item3.setQuantity(12);
+
+        // Add items to the grocery list
+        list.add(item1);
+        list.add(item2);
+        list.add(item3);
+
+        // Display the total cost of the grocery list
+        System.out.printf("Total cost of the grocery list: $%.2f%n", list.getTotalCost());
+    }
+}
